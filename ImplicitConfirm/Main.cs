@@ -63,9 +63,9 @@ namespace ImplicitConfirm
             }
 
             encode = System.Text.Encoding.GetEncoding("ks_c_5601-1987");
-            foreach (string f in fFullList)
+            for (int f = 0; f < fFullList.Length; f++)
             {
-                reader = new StreamReader(f, encode);
+                reader = new StreamReader(fFullList[f], encode);
 
                 string line = reader.ReadLine();
                 int pNum = 0;
@@ -75,7 +75,6 @@ namespace ImplicitConfirm
 
                 while ((line = reader.ReadLine()) != null)
                 {
-
                 }
 
 
