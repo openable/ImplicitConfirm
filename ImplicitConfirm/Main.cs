@@ -112,6 +112,8 @@ namespace ImplicitConfirm
                 di.Create();
 
             writer = new StreamWriter(newPath + "result.csv", true, encode);
+            writer.WriteLine("ID,Score");
+
             for (int i = 0; i < fFullList.Length; i++)
                 writer.WriteLine(pList[i] + "," + pScore[i]);
             writer.Close();
