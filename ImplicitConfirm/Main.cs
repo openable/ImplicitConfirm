@@ -82,6 +82,21 @@ namespace ImplicitConfirm
                     w = line.Split('\t');
                     pList[f] = w[0];
                     pNum = Convert.ToInt32(w[1]);
+                    if (tNum == pNum)
+                    {
+                        rTime = Convert.ToInt32(w[3]);
+                        gTime = gTime + Convert.ToInt32(w[6]);
+                        tNum = pNum;
+                    }
+                    else
+                    {
+                        pScore[f] = pScore[f] + ((double)gTime / (double)rTime);
+                        gTime = 0;
+
+                        rTime = Convert.ToInt32(w[3]);
+                        gTime = gTime + Convert.ToInt32(w[6]);
+                        tNum = pNum;
+                    }
                 }
                 pScore[f] = pScore[f] + (gTime / rTime);
 
