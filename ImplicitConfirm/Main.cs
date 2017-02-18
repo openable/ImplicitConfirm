@@ -81,7 +81,7 @@ namespace ImplicitConfirm
 
                 while ((line = reader.ReadLine()) != null)
                 {
-                    w = line.Split('\t');
+                    w = line.Split(',');
                     pList[f] = w[0];
                     pNum = Convert.ToInt32(w[1]);
                     if (tNum == pNum)
@@ -110,6 +110,11 @@ namespace ImplicitConfirm
             DirectoryInfo di = new DirectoryInfo(newPath);
             if (di.Exists == false)
                 di.Create();
+
+            writer = new StreamWriter(newPath + "result.csv", true, encode);
+            for (int i = 0; i < fFullList.Length; i++)
+                writer.WriteLine(pList[i] + "," + pScore[i]);
+            writer.Close();
         }
     }
 }
