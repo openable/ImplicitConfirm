@@ -22,7 +22,7 @@ namespace ImplicitConfirm
         public Encoding encode;
         public StreamReader reader;
         public string[] pList;          //피험자 ID
-        public int[] pScore;            //피험자 응시율 누적 점수
+        public double[] pScore;            //피험자 응시율 누적 점수
 
         public Main()
         {
@@ -51,7 +51,7 @@ namespace ImplicitConfirm
             }
 
             pList = new string[openPanel.FileNames.Length];
-            pScore = new int[openPanel.FileNames.Length];
+            pScore = new double[openPanel.FileNames.Length];
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -63,22 +63,29 @@ namespace ImplicitConfirm
             }
 
             encode = System.Text.Encoding.GetEncoding("ks_c_5601-1987");
+
+            // 파일 읽어오기
             for (int f = 0; f < fFullList.Length; f++)
             {
                 reader = new StreamReader(fFullList[f], encode);
 
                 string line = reader.ReadLine();
-                int pNum = 0;
-                int rTime = 0;
-                int gTime = 0;
+                int tNum = 2;       // 앞 번호를 기억하기 위한 임시 번호, 2번부터 시작해서 2로 할당
+                int pNum = 0;       // 문항 번호
+                int rTime = 0;      // 반응시간
+                int gTime = 0;      // 개별 응시시간 누적 시간
                 string[] w;
+                pScore[f] = 0.0;
 
                 while ((line = reader.ReadLine()) != null)
                 {
+                    w = line.Split('\t');
+                    pList[f] = w[0];
+                    pNum = Convert.ToInt32(w[1]);
                 }
+                pScore[f] = pScore[f] + (gTime / rTime);
 
-
-                    reader.Close();
+                reader.Close();
             }
         }
     }
