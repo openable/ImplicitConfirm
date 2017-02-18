@@ -21,6 +21,8 @@ namespace ImplicitConfirm
 
         public Encoding encode;
         public StreamReader reader;
+        public string[] pList;          //피험자 ID
+        public int[] pScore;            //피험자 응시율 누적 점수
 
         public Main()
         {
@@ -47,6 +49,9 @@ namespace ImplicitConfirm
                 textBox1.Text = "None";
                 textBox1.Tag = "";
             }
+
+            pList = new string[openPanel.FileNames.Length];
+            pScore = new int[openPanel.FileNames.Length];
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -58,6 +63,20 @@ namespace ImplicitConfirm
             }
 
             encode = System.Text.Encoding.GetEncoding("ks_c_5601-1987");
+            foreach (string f in fFullList)
+            {
+                reader = new StreamReader(f, encode);
+
+                string line = reader.ReadLine();
+                int pNum = 0;
+                int rTime = 0;
+                int gTime = 0;
+
+
+
+
+                reader.Close();
+            }
         }
     }
 }
