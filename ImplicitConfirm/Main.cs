@@ -115,6 +115,8 @@ namespace ImplicitConfirm
             for (int i = 0; i < fFullList.Length; i++)
                 writer.WriteLine(pList[i] + "," + pScore[i]);
             writer.Close();
+
+            MessageBox.Show("파일을 생성하였습니다.", "확인", MessageBoxButtons.OK);
         }
     }
 }
