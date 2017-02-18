@@ -24,6 +24,8 @@ namespace ImplicitConfirm
         public string[] pList;          //피험자 ID
         public double[] pScore;            //피험자 응시율 누적 점수
 
+        public StreamWriter writer;
+
         public Main()
         {
             InitializeComponent();
@@ -102,6 +104,12 @@ namespace ImplicitConfirm
 
                 reader.Close();
             }
+
+            // 결과 쓰기
+            string newPath = path + "Score\\";
+            DirectoryInfo di = new DirectoryInfo(newPath);
+            if (di.Exists == false)
+                di.Create();
         }
     }
 }
