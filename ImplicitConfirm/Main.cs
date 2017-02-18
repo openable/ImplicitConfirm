@@ -71,11 +71,15 @@ namespace ImplicitConfirm
                 int pNum = 0;
                 int rTime = 0;
                 int gTime = 0;
+                string[] w;
+
+                while ((line = reader.ReadLine()) != null)
+                {
+
+                }
 
 
-
-
-                reader.Close();
+                    reader.Close();
             }
         }
     }
