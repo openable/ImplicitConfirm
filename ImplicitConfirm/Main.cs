@@ -76,8 +76,8 @@ namespace ImplicitConfirm
                 int pNum = 0;       // 문항 번호
                 int rTime = 0;      // 반응시간
                 int gTime = 0;      // 개별 응시시간 누적 시간
-                string[] w;
-                pScore[f] = 0.0;
+                string[] w;         // 단어 인식
+                pScore[f] = 0.0;    // 점수 합산
 
                 while ((line = reader.ReadLine()) != null)
                 {
